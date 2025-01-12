@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OMI MAILER</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>OMI MAILER</h1>
+        <form method="POST" action="/">
+            <div class="form-group">
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name" required>
+            </div>
+            <div class="form-group">
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required>
+            </div>
+            <div class="form-group">
+                <label for="uid">UID:</label>
+                <input type="text" id="uid" name="uid" required>
+            </div>
+            <button type="submit">Add Contact</button>
+        </form>
+
+        <div class="contacts">
+            <h2>Contacts</h2>
+            {% for contact in contacts %}
+            <div class="contact-item">
+                <strong>UID:</strong> {{ contact.uid }}<br>
+                <strong>Name:</strong> {{ contact.name }}<br>
+                <strong>Email:</strong> {{ contact.email }}
+            </div>
+            {% else %}
+            <p>No contacts added yet.</p>
+            {% endfor %}
+        </div>
+    </div>
+</body>
+</html>
