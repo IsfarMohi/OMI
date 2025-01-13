@@ -16,7 +16,7 @@ def memory_creation():
     creds = authenticate_gmail()
     service = build('gmail', 'v1', credentials=creds)
     sender = extract_email_from_db_by_uid(uid)
-    input = "send an email to shay, Lets meet tomorrow at 7 pm IST online for the project discussion"
+    input = "send an email to bariq, Lets meet tomorrow at 7 pm IST online for the project discussion"
 
 
     email_details = generate_email_details(input)
