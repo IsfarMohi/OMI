@@ -8,13 +8,15 @@ from googleapiclient.errors import HttpError
 from google.oauth2.credentials import Credentials
 from google.auth.transport.requests import Request
 from google_auth_oauthlib.flow import InstalledAppFlow
+from dotenv import load_dotenv
 
-
+load_dotenv()
 #uid ="kJRoumGMSsfUKLoxkUqv8kL6YCn2"
 
+SCOPES = os.getenv('SCOPES')
+api_key = os.getenv('API_KEY')
 
-SCOPES = ['https://www.googleapis.com/auth/gmail.send']
-client = OpenAI(api_key="sk-proj-CIqCoC86c9fcgyW4VepPT3BlbkFJzcHYPk6M2RkPUR13HwdG")
+client = OpenAI(api_key)
 
 def authenticate_gmail():
     creds = None
