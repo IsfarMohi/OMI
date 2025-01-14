@@ -9,15 +9,16 @@ from google.oauth2.credentials import Credentials
 from google.auth.transport.requests import Request
 from google_auth_oauthlib.flow import InstalledAppFlow
 from dotenv import load_dotenv
+from db import *
 
 load_dotenv()
 #uid ="kJRoumGMSsfUKLoxkUqv8kL6YCn2"
 
 SCOPES = os.getenv('SCOPES')
-api_key = os.getenv('API_KEY')
+apikey = os.getenv('API_KEY')
 
-client = OpenAI(api_key)
-
+print(apikey)
+client = OpenAI(api_key = apikey)
 def authenticate_gmail():
     creds = None
     if os.path.exists('token.json'):
@@ -101,20 +102,20 @@ def generate_email_details(user_command):
         return extracted_data
 
 
-# if __name__ == '__main__':
-#     creds = authenticate_gmail()
-#     service = build('gmail', 'v1', credentials=creds)
-#     sender = extract_email_from_db_by_uid(uid)
-#     input = "send an email to bariq, Lets meet tomorrow at 7 pm IST online for the project discussion"
+def processCommand(full_text, uid):
+    creds = authenticate_gmail()
+    service = build('gmail', 'v1', credentials=creds)
+    sender = extract_email_from_db_by_uid(uid)
+    input = full_text
 
 
-#     email_details = generate_email_details(input)
+    email_details = generate_email_details(input)
     
-#     status = email_details["status"]
-#     if status == "Success":
-#         name = email_details['to']
-#         recipient = extract_contacts_from_db_by_uid_and_name(uid,name)
-#         subject = email_details["subject"]
-#         body = email_details["body"]
-#     message = create_message(sender, recipient, subject, body)
-#     send_message(service, 'me', message)
+    status = email_details["status"]
+    if status == "Success":
+        name = email_details['to']
+        recipient = extract_contacts_from_db_by_uid_and_name(uid,name)
+        subject = email_details["subject"]
+        body = email_details["body"]
+    message = create_message(sender, recipient, subject, body)
+    send_message(service, 'me', message)
