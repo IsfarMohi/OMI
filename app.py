@@ -28,7 +28,7 @@ def executeCommand():
                 conversation_words = conversation_words[-10:]
 
     full_conversation = " ".join(conversation_words)
-    print(f"Updated Full Conversation: {full_conversation}")
+    print(f"Full Conversation: {full_conversation}")
 
     processCommand(full_conversation, uid)
     print("Message sent")
