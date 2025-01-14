@@ -12,13 +12,10 @@ from dotenv import load_dotenv
 from db import *
 
 load_dotenv()
-#uid ="kJRoumGMSsfUKLoxkUqv8kL6YCn2"
-
 SCOPES = os.getenv('SCOPES')
 apikey = os.getenv('API_KEY')
-
-print(apikey)
 client = OpenAI(api_key = apikey)
+
 def authenticate_gmail():
     creds = None
     if os.path.exists('token.json'):
