@@ -116,3 +116,11 @@ def processCommand(full_text, uid):
         body = email_details["body"]
     message = create_message(sender, recipient, subject, body)
     send_message(service, 'me', message)
+
+
+
+def process_real_command(uid, name):
+    print(uid)
+    print(name)
+
+
