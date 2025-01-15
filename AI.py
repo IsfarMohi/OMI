@@ -122,5 +122,6 @@ def processCommand(full_text, uid):
 def process_real_command(uid, name):
     print(uid)
     print(name)
+    print(uid, name)
 
 
