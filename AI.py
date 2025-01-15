@@ -16,6 +16,8 @@ SCOPES = os.getenv('SCOPES')
 apikey = os.getenv('API_KEY')
 client = OpenAI(api_key = apikey)
 
+print('hello')
+
 def authenticate_gmail():
     creds = None
     if os.path.exists('token.json'):
